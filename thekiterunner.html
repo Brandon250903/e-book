@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+ <title>Document</title>
+ <style>
+    #tran{
+       display:none;
+       width:100%;
+       height:100%;
+       position:fixed;
+       bottom:0;
+       right:0;
+       background-color: hsla(0, 0%, 0%, 0.5); /* Black color with 50% transparency */
+   
+   }
+   #popup{
+       display:none;
+       position:fixed;
+       top:50%;;
+       left:50%;
+       transform:translate(-50%,-50%);
+       border:1px solid black;
+       padding:50px;
+       background-color:burlywood;
+       box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+       border-radius:20px;
+   }
+   #popup button a{
+       text-decoration:none;
+       color:black;
+   }
+   #popup button{
+       border-radius:10px;
+       margin-left:50px;
+   }
+   #popup .cross{
+       top:0;
+       margin-left:90%;
+       color:black;
+       text-decoration:none;
+   }
+   #popup form label{
+       margin-left:60px;
+   }
+   #popup p{
+       font-size:20px;
+   }
+   </style>
+</head>
+<body>
+<header>
+    <button type="button" class="btn btn-outline-warning"><a href="index.html" style="text-decoration:none;color:black;"> < Back</a></button>
+    <div class="atm" style="justify-content:space-between;display:flex">
+        <div class="atm1" style="margin:30px 40px 0 30px">
+            <img src="the-kite-runner.jpg" alt="atm" width="258px" height="400px">
+        </div>
+        <div class="atm2" style="margin-right:40%;margin-top:30px">
+            <h1>The Kite Runner</h1><br>
+            <h6>by <span style="color:yellowgreen">Khaled Hosseini</span></h6><br>
+            <p>The Kite Runner is about an uncanny friendship in the middle of a country which is on the verge of facing a major crisis.
+                While Amir is the son of a wealthy Wazir, 
+                Hassan's father works as the Wazir's servant and he belongs to the despised Hazara community.</p><br><br>
+            <button type="button" class="btn btn-outline-dark" onclick="openpopup()"><a href="the_kite_runner.pdf" style="text-decoration:none;">Read</a></button>
+            <button type="button" class="btn btn-outline-dark" onclick="openpopup()"><i class="bi bi-download"></i> Download</button>
+        </div>
+    </div>
+    <div class="text" style="margin:20px 0 0 30px">
+        <p>PUBLISHED: <span style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">29th May 2003</span></p>
+        <P>PAGES: <span style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">352</span></P>
+        <p>DOWNLOADS:</p>
+    </div>
+</header>
+<div id="tran"></div>
+<div id="popup" class="popup1">
+    <form>
+        <a href="javascript:void(0)" class="cross" onclick="closepopup()">X</a><br>
+        <p><b>Create your account</b></p>
+        <label>Name</label><br>
+        <input type="text" id="name" required><br>
+        <label>Email-id</label><br>
+        <input type="email" id="email" ><br>
+        <label>Password</label><br>
+        <input type="password" id="pass"><br>
+        <label>Phone No.</label><br>
+        <input type="tel" id="phone"><br><br>
+        <button type="button" onclick="return validation()"><a href="Registration.html">Continue</a></button><br>
+        Already have an account?<a href="Loginhtml.html"> Log in</a>
+    
+    </form>
+</div>
+
+<script>
+   //make the popup invisible
+   function openpopup(){
+        document.getElementById('tran').style.display="block";
+        document.getElementById('popup').style.display="block";
+    }
+    //make the popup visible
+    function closepopup(){
+        document.getElementById('tran').style.display="none";
+        document.getElementById('popup').style.display="none";
+    }
+    //validation function
+    function validation() {
+        var name=document.getElementById('name').value;
+        var email=document.getElementById('email').value;
+        var pass=document.getElementById('pass').value;
+        var phone=document.getElementById('phone').value;
+
+        var emailRegex= /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        var nameRegex = /^[A-Za-z]+$/;
+        var phoneRegex = /^[0-9]{10}$/;
+    
+        if(!nameRegex.test(name))
+        {
+            alert("Enter appropriate name");
+            return false;
+        }
+        else if(name.trim().length==1)
+        {
+            alert("enter the proper name");
+            return false;
+        }
+        else if(!emailRegex.test(email))
+        {
+            alert("Enter valid Email-id");
+            return false;
+        }
+        else if(pass.length<8)
+        {
+            alert("Enter atleast 8 charachters");
+            return false;
+        }
+        else if(!phoneRegex.test(phone))
+        {
+            alert("Enter appropriate phone number");
+            return false;
+        }
+        else
+        {
+            alert("Register successfully");
+            return true;
+        }
+    }
+    </script>
+</body>
+</html>
