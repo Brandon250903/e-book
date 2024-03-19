@@ -233,7 +233,7 @@ section .nav .icon i:hover{
     z-index:auto;
 }
 .scroll-arrow {
-    position: fixed;
+    position: sticky;
     top: 50%;
     transform: translateX(-50%);
     font-size: 24px;
